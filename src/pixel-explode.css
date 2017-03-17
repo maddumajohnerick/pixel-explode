@@ -1,0 +1,106 @@
+html, body {
+  height: 100%;
+}
+
+.pixel-container {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.pixel {
+  border: 2px solid black;
+  background: black;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  margin-bottom: -10px;
+}
+
+.pixel-green {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: animgreen;
+  -moz-animation-name: animgreen;
+  animation-name: animgreen;
+}
+
+@-webkit-keyframes animgreen {
+  0%  {background: #39A939;}
+  /*0%   {background: black;}*/
+  20% {background: #39A939;}
+  100% {background: black;}
+}
+
+@keyframes animgreen {
+  0%  {background: #39A939;}
+  /*0%   {background: black;}*/
+  20% {background: #39A939;}
+  100% {background: black;}
+}
+
+.pixel-blue {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: animblue;
+  -moz-animation-name: animblue;
+  animation-name: animblue;
+}
+
+@-webkit-keyframes animblue {
+  0%  {background: #459393;}
+  /*0%   {background: black;}*/
+  20% {background: #459393;}
+  100% {background: black;}
+}
+
+@keyframes animblue {
+  0%  {background: #459393;}
+  /*0%   {background: black;}*/
+  20% {background: #459393;}
+  100% {background: black;}
+}
+
+.pixel-red {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: animred;
+  -moz-animation-name: animred;
+  animation-name: animred;
+}
+
+@-webkit-keyframes animred {
+  0%  {background: #B52626;}
+  /*0%   {background: black;}*/
+  20% {background: #B52626;}
+  100% {background: black;}
+}
+
+@keyframes animred {
+  0%  {background: #B52626;}
+  /*0%   {background: black;}*/
+  20% {background: #B52626;}
+  100% {background: black;}
+}
+
+.pixel-orange {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: animorange;
+  -moz-animation-name: animorange;
+  animation-name: animorange;
+}
+
+@-webkit-keyframes animorange {
+  0%  {background: #B56726;}
+  /*0%   {background: black;}*/
+  20% {background: #B56726;}
+  100% {background: black;}
+}
+
+@keyframes animorange {
+  0%  {background: #B56726;}
+  /*0%   {background: black;}*/
+  20% {background: #B56726;}
+  100% {background: black;}
+}
