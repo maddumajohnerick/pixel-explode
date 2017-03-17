@@ -82,30 +82,25 @@ var trackMyMouse = (function(){
         clearInterval(myIntervalDown);
         clearInterval(myIntervalUp);
         clearInterval(myIntervalRight);
+        clearInterval(myIntervalLeft);
       }, 10000);
     });
 
-    // var liveClicker = setInterval(function() {
-    //   $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
-    // }, 2000);
-    //
-    // $(window).blur(function() {
-    //   console.log('blur');
-    //   setTimeout(function() {
-    //     clearInterval(liveClicker);
-    //     clearInterval(globalIntervalUp);
-    //     clearInterval(globalIntervalDown);
-    //     clearInterval(globalIntervalRight);
-    //     clearInterval(globalIntervalLeft);
-    //   }, 2000);
-    // });
-    //
-    // $(window).focus(function() {
-    //   console.log('focus');
-    //   setInterval(function() {
-    //     $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
-    //   }, 2000);
-    // });
+    if ( window.addEventListener ) {
+      var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+      window.addEventListener("keydown", function(e){
+        kkeys.push( e.keyCode );
+        if ( kkeys.toString().indexOf( konami ) >= 0 ){
+	        var konamiCode = setInterval(function() {
+            $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
+          }, 500 );
+          setTimeout(function() {
+            clearInterval(konamiCode);
+          }, 5000)
+          kkeys = [];
+        }
+      }, true);
+    }
 	}
 
 	var publicAPI = {
