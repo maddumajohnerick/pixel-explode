@@ -4,7 +4,7 @@ var trackMyMouse = (function(){
 
     var winHeight = $('.pixel-container').height();
     var winWidth = $('.pixel-container').width();
-    var pixelWidth = ((winWidth / 20) - 1).toFixed();
+    var pixelWidth = (Math.floor(winWidth) / 20 - 1).toFixed();
     var pixelHeight = (winHeight / 20).toFixed();
     var pixelTotal = pixelWidth;
 
@@ -46,6 +46,7 @@ var trackMyMouse = (function(){
         }, 2000);
         up--;
       }, 90);
+      globalIntervalUp = myIntervalUp;
 
       var myIntervalDown = setInterval(function(){
         var added = $(".pixel[attry='" + (parseInt($(_this).attr('attry')) + down) + "'][attrx='" + (parseInt($(_this).attr('attrx'))) + "']").attr('class', 'pixel');
@@ -55,6 +56,7 @@ var trackMyMouse = (function(){
         }, 2000);
         down++;
       }, 90);
+      globalIntervalDown = myIntervalDown;
 
       var myIntervalRight = setInterval(function(){
 				var added = $(".pixel[attry='" + (parseInt($(_this).attr('attry'))) + "'][attrx='" + (parseInt($(_this).attr('attrx')) + right) + "']").attr('class', 'pixel');
@@ -64,6 +66,7 @@ var trackMyMouse = (function(){
         }, 2000);
         right++;
       }, 90);
+      globalIntervalRight = myIntervalRight;
 
       var myIntervalLeft = setInterval(function(){
         var added = $(".pixel[attry='" + (parseInt($(_this).attr('attry'))) + "'][attrx='" + (parseInt($(_this).attr('attrx')) + left) + "']").attr('class', 'pixel');
@@ -73,6 +76,7 @@ var trackMyMouse = (function(){
         }, 2000);
         left--;
       }, 90);
+      globalIntervalLeft = myIntervalLeft;
 
       setTimeout(function(){
         clearInterval(myIntervalDown);
@@ -81,18 +85,27 @@ var trackMyMouse = (function(){
       }, 10000);
     });
 
-    var liveClicker = setInterval(function() {
-      $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
-    }, 2000);
-
-    $(window).blur(function() {
-      console.log('clear');
-      clearInterval(liveClicker);
-    });
-
-    $(window).blur(function() {
-      init();
-    });
+    // var liveClicker = setInterval(function() {
+    //   $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
+    // }, 2000);
+    //
+    // $(window).blur(function() {
+    //   console.log('blur');
+    //   setTimeout(function() {
+    //     clearInterval(liveClicker);
+    //     clearInterval(globalIntervalUp);
+    //     clearInterval(globalIntervalDown);
+    //     clearInterval(globalIntervalRight);
+    //     clearInterval(globalIntervalLeft);
+    //   }, 2000);
+    // });
+    //
+    // $(window).focus(function() {
+    //   console.log('focus');
+    //   setInterval(function() {
+    //     $(".pixel[attry='" + (Math.floor(Math.random() * pixelHeight) + 1) + "'][attrx='" + (Math.floor(Math.random() * pixelWidth) + 1) + "']").trigger('click');
+    //   }, 2000);
+    // });
 	}
 
 	var publicAPI = {
