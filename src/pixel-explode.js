@@ -96,8 +96,8 @@ var trackMyMouse = (function(){
           }, 500 );
           setTimeout(function() {
             clearInterval(konamiCode);
+            kkeys = [];
           }, 5000)
-          kkeys = [];
         }
       }, true);
     }
