@@ -1,6 +1,7 @@
 var trackMyMouse = (function(){
 
-  function generatePixel() {
+  function init() {
+
     var winHeight = $('.pixel-container').height();
     var winWidth = $('.pixel-container').width();
     var pixelWidth = ((Math.floor(winWidth) / 20) - 1).toFixed();
@@ -17,11 +18,6 @@ var trackMyMouse = (function(){
       }
       $('<br />').appendTo('.pixel-container');
     }
-  }
-
-  function init() {
-
-    generatePixel();
 
     $('.pixel').click(function() {
       var _this = this;
@@ -93,7 +89,6 @@ var trackMyMouse = (function(){
         clearInterval(myIntervalLeft);
       }, 10000);
     });
-
     if ( window.addEventListener ) {
       var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
       window.addEventListener("keydown", function(e){
@@ -111,9 +106,7 @@ var trackMyMouse = (function(){
     }
 
     $(window).resize(function() {
-      $('.pixel-container').empty();
-      generatePixel();
-      init();
+      location.reload();
     })
 	}
 
