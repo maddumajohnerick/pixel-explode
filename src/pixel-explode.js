@@ -1,11 +1,13 @@
 var trackMyMouse = (function(){
 
-  function init() {
-
+  function generatePixel() {
     var winHeight = $('.pixel-container').height();
     var winWidth = $('.pixel-container').width();
-    var pixelWidth = (Math.floor(winWidth) / 20 - 1).toFixed();
+    var pixelWidth = ((Math.floor(winWidth) / 20) - 1).toFixed();
+    // console.log(winWidth);
     var pixelHeight = (winHeight / 20).toFixed();
+    // var pixelHeight = 2;
+    // console.log(pixelWidth);
     var pixelTotal = pixelWidth;
 
     for (var y = 1; y <= pixelHeight; y++) {
@@ -13,7 +15,13 @@ var trackMyMouse = (function(){
         var pixel = $('<div class="pixel" attry="' + y + '" attrx="' + x + '"></div>');
         $(pixel).appendTo('.pixel-container');
       }
+      $('<br />').appendTo('.pixel-container');
     }
+  }
+
+  function init() {
+
+    generatePixel();
 
     $('.pixel').click(function() {
       var _this = this;
@@ -101,6 +109,12 @@ var trackMyMouse = (function(){
         }
       }, true);
     }
+
+    $(window).resize(function() {
+      $('.pixel-container').empty();
+      generatePixel();
+      init();
+    })
 	}
 
 	var publicAPI = {
